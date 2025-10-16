@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Calculator</title>
+    <style type="text/css">
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(45deg, #0a0a0a);
+        }
+        
+        .calculator {
+        border: 1px solid #717377;
+        padding: 20px;
+        border-radius: 16px;
+        background: transparent;
+        box-shadow: 0px 3px 15px rgba(113, 115, 119);
+        }
+        
+        input {
+        width: 320px;
+        border-radius: 15px;
+        padding: 24px;
+        margin: 10px;
+        background: transparent;
+        box-shadow: 0px 3px 15px rgba(84, 84, 84, 0.1);
+        font-size: 40px;
+        text-align: right;
+        color: #fb7c14;
+        }
+        
+        input::placeholder {
+        color: black;
+          color: #fb7c14;
+        }
+        
+        button {
+        border: none;
+        width: 60px;
+        height: 60px;
+        margin: 10px;
+        border-radius: 50%;
+        background: black;
+        color: #ffffff;
+        font-size: 20px;
+        box-shadow: -8px -8px 15px rgba(255, 255, 255);
+        }
+        
+        .equalbtn {
+        background-color: #fb7c14;
+        }
+        
+        .operator {
+        color: #6dee0a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+           <marquee>
+         <h3 style="color: #fb7c14;">S.T.G SMART CODER'S CALCULATOR</h3>
+      </marquee>
+            <input type="text" id="inputbox" placeholder="0">
+            <div>
+                <button class="button operator">AC</button>
+                <button class="button operator">DEL</button>
+                <button class="button operator">%</button>
+                <button class="button operator">/</button>
+            </div>
+            <div>
+                <button class="button">7</button>
+                <button class="button">8</button>
+                <button class="button">9</button>
+                <button class="button operator">*</button>
+            </div>
+            <div>
+                <button class="button">4</button>
+                <button class="button">5</button>
+                <button class="button">6</button>
+                <button class="button operator">-</button>
+            </div>
+            <div>
+                <button class="button">1</button>
+                <button class="button">2</button>
+                <button class="button">3</button>
+                <button class="button operator">+</button>
+            </div>
+            <div>
+                <button class="button">00</button>
+                <button class="button">0</button>
+                <button class="button operator">.</button>
+                <button class="button equalbtn">=</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    let input = document.getElementById('inputbox');
+    let buttons = document.querySelectorAll('button');
+    let string = "";
+    
+    Array.from(buttons).forEach(button => {
+    button.addEventListener('click', (e) => {
+    if (e.target.innerHTML == '=') {
+    string = eval(string);
+    input.value = string;
+    } else if (e.target.innerHTML == 'AC') {
+    string = "";
+    input.value = string;
+    } else if (e.target.innerHTML == 'DEL') {
+    string = string.substring(0, string.length - 1);
+    input.value = string;
+    } else {
+    string += e.target.innerHTML;
+    input.value = string;
+    }
+    });
+    });
+    </script>
+</body>
+</html>
